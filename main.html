@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+</head>
+
+<body>
+	<script type="text/javascript">
+		window.onload=function(){
+			let links = document.querySelectorAll(".gridBtn"),
+				currentPlayer = 1,
+				currentP,
+				cellIsOccupied = true,
+
+				i
+
+			for(i = 0; i < links.length ; i++){
+				console.log(currentPlayer)
+				
+				links[i].addEventListener("click", function(e){
+					
+			        cellIsOccupied = e.currentTarget.classList.contains("player2") || e.currentTarget.classList.contains("player1")	;
+
+					if(cellIsOccupied === false){
+
+			        	e.currentTarget.classList.toggle("player"+currentPlayer)
+			        	if(currentPlayer === 1){
+			            	currentPlayer = 2
+			            	currentP[i] = 2
+			        	}else{
+			            	currentPlayer = 1
+			            	
+			            	currentP[i] = 1
+			          	}
+			        }
+
+			        if(currentP[0]===1 && currentP[1]===1 && currentP[2]===1)
+			        	console.log("player 1 vince")
+			        
+				})
+			}
+		
+		}
+	</script>
+
+	<div class="trisGrid">
+		
+		<div class="row">
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+				
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
