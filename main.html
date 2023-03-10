@@ -6,13 +6,29 @@
 </head>
 
 <body>
+
+	<div id="container">
+		<h1>
+			Tris
+		</h1>
+		<p>
+			gioco in cui fai tris 
+		</p>
+	</div>
+
 	<script type="text/javascript">
+
 		window.onload=function(){
+
+			let board = [
+				[null,null,null],
+				[null,null,null],
+				[null,null,null]
+				];
+
 			let links = document.querySelectorAll(".gridBtn"),
 				currentPlayer = 1,
-				currentP,
 				cellIsOccupied = true,
-
 				i
 
 			for(i = 0; i < links.length ; i++){
@@ -24,21 +40,29 @@
 
 					if(cellIsOccupied === false){
 
+						let row = parseInt(btn.dataset.row)
+						let col = parseInt(btn.dataset.col)
+
 			        	e.currentTarget.classList.toggle("player"+currentPlayer)
 			        	if(currentPlayer === 1){
 			            	currentPlayer = 2
-			            	currentP[i] = 2
+			            	board[i]=X
 			        	}else{
 			            	currentPlayer = 1
-			            	
-			            	currentP[i] = 1
+			            	board[i]=O
 			          	}
 			        }
 
-			        if(currentP[0]===1 && currentP[1]===1 && currentP[2]===1)
-			        	console.log("player 1 vince")
-			        
+			       
 				})
+			}
+
+			function printBoard(){
+				for (let i = 0; i < 3; i++) {
+					for (let j = 0; i < 3; j++) {
+						console.log(board[i][j])
+					}
+				}
 			}
 		
 		}
@@ -48,37 +72,37 @@
 		
 		<div class="row">
 			<div class="col">
-				<a href="#" class="gridBtn"></a>
+				<a href="#" data-row="0" data-col="0" class="gridBtn"></a>
 				
 			</div>
 			<div class="col">
-				<a href="#" class="gridBtn"></a>
+				<a href="#" data-row="0" data-col="1" class="gridBtn"></a>
 
 			</div>
 			<div class="col">
-				<a href="#" class="gridBtn"></a>
+				<a href="#" data-row="0" data-col="2" class="gridBtn"></a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<a href="#" class="gridBtn"></a>
+				<a href="#" data-row="1" data-col="0" class="gridBtn"></a>
 			</div>
 			<div class="col">
-				<a href="#" class="gridBtn"></a>
+				<a href="#" data-row="1" data-col="1" class="gridBtn"></a>
 			</div>
 			<div class="col">
-				<a href="#" class="gridBtn"></a>
+				<a href="#" data-row="1" data-col="2" class="gridBtn"></a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<a href="#" class="gridBtn"></a>
+				<a href="#" data-row="2" data-col="0" class="gridBtn"></a>
 			</div>
 			<div class="col">
-				<a href="#" class="gridBtn"></a>
+				<a href="#" data-row="2" data-col="1" class="gridBtn"></a>
 			</div>
 			<div class="col">
-				<a href="#" class="gridBtn"></a>
+				<a href="#" data-row="2" data-col="2" class="gridBtn"></a>
 			</div>
 		</div>
 	</div>
