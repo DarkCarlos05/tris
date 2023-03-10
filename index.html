@@ -29,32 +29,61 @@
 			let links = document.querySelectorAll(".gridBtn"),
 				currentPlayer = 1,
 				cellIsOccupied = true,
-				i
+				i,
+				j,
+				list = [
+				[0,0,0],
+				[0,0,0],
+				[0,0,0]
+				];
 
-			for(i = 0; i < links.length ; i++){
-				console.log(currentPlayer)
+
+			function getEmptyCells(grid){
 				
-				links[i].addEventListener("click", function(e){
+				for (i = 0; i < 3; i++) {
+					for (j = 0; i < 3; j++) {
+
+						if(board[i][j]!=null){
+
+							if(board[i][j]==X)
+								list[i][j]=2
+							if(board[i][j]==O)
+								list[i][j]=1
+
+						}
+
+					}
+				}
+			}
+
+			for(i = 0; i < 3 ; i++){
+				for(j = 0; j < 3 ; j++){
+
+					console.log(currentPlayer)
 					
-			        cellIsOccupied = e.currentTarget.classList.contains("player2") || e.currentTarget.classList.contains("player1")	;
+					links[i][j].addEventListener("click", function(e){
+						
+				        cellIsOccupied = e.currentTarget.classList.contains("player2") || e.currentTarget.classList.contains("player1")	;
 
-					if(cellIsOccupied === false){
+						if(cellIsOccupied === false){
 
-						let row = parseInt(btn.dataset.row)
-						let col = parseInt(btn.dataset.col)
+							e.currentTarget.classList.toggle("player"+currentPlayer)
+				        	if(currentPlayer === 1){
+				            	currentPlayer = 2
+				            	board[i][j]=O
+				        	}else{
+				            	currentPlayer = 1
+				            	board[i][j]=X
+				          	}
+				        }
 
-			        	e.currentTarget.classList.toggle("player"+currentPlayer)
-			        	if(currentPlayer === 1){
-			            	currentPlayer = 2
-			            	board[i]=X
-			        	}else{
-			            	currentPlayer = 1
-			            	board[i]=O
-			          	}
-			        }
+				       
+					})
 
-			       
-				})
+					if(i==2&&j==2){
+						printBoard();
+					}
+				}
 			}
 
 			function printBoard(){
